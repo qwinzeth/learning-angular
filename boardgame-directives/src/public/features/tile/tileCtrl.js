@@ -14,6 +14,9 @@ directivesApp.Controllers
 			case 'start':
 				$scope.text = 'Start';
 			break;
+			case 'finish':
+				$scope.text = 'Finish';
+			break;
 			default:
 				$scope.text = $scope.type;
 			break;

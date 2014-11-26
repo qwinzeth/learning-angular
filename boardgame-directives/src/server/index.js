@@ -2,7 +2,7 @@ var port=23502;
 var express=require('express');
 
 var app=express();
-app.use('/', express.static('./public/'));
+app.use('/', express.static('./src/public/'));
 
 var server=app.listen(port, listen);
 

@@ -5,13 +5,13 @@ directivesApp
             'use strict';
 			
 			function link(scope, element, attr){
-				scope.value = 1 + Math.floor(scope.sides * Math.random());
+				scope.model.value = 1 + Math.floor(scope.model.sides * Math.random());
 			}
 
             return {
                 restrict: 'E',
                 scope: {
-					sides: '@'
+					model: '=',
 				},
                 templateUrl: 'features/die/die-partial.html',
 				link: link

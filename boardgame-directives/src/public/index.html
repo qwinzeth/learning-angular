@@ -5,6 +5,7 @@
         <title>Learning Angular Directives</title>
  		<script type='text/javascript' src='common/angular.min.js'></script>
  		<script type='text/javascript' src='common/angular-ui-router.js'></script>
+ 		<script type='text/javascript' src='common/lodash.js'></script>
 		<script type='text/javascript' src='common/directivesApp.js'></script>
 		<script type="text/javascript" src="features/board/boardCtrl.js"></script>
 		<script type="text/javascript" src="features/tile/tileCtrl.js"></script>
@@ -13,14 +14,15 @@
 		<script type="text/javascript" src="features/die/dieDirective.js"></script>
 		<link href="common/directives.css" type="text/css" rel="stylesheet" />
     </head>
-    <body>
+    <body ng-controller='boardCtrl'>
 		<div class='dice-container'>
-			<game-die sides='6'></game-die>
-			<game-die sides='6'></game-die>
+			<game-die ng-repeat='die in dice' model='dice[$index]' ng-click='rollDice();'></game-die>
+			<div class='dice-total'>{{movesRemaining}}</div>
+			<div class='current-player-header'>Player {{currentPlayer.name}}</div>
 		</div>
-		<div id='divBoard' ng-controller='boardCtrl'>
-			<player ng-repeat='player in players' name='{{($index + 1)}}' color='{{player.color}}' top='{{player.top}}' left='{{player.left}}'></player>
-			<tile ng-repeat='tile in tiles' type='{{tile.type}}' top='{{tile.top}}' left='{{tile.left}}' ng-click='movePlayerTo($index);'></tile>
+		<div id='divBoard'>
+			<player ng-repeat='player in players' name='{{(player.name)}}' color='{{player.color}}' top='{{player.top}}' left='{{player.left}}'></player>
+			<tile ng-repeat='tile in tiles' type='{{tile.type}}' top='{{tile.top}}' left='{{tile.left}}' ng-click='choosePath(tile);'></tile>
 		</div>
 	</body>
 </html>
