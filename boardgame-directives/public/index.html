@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" ng-app='directivesApp'>
+	<head>
+		<meta charset="utf-8">
+        <title>Learning Angular Directives</title>
+ 		<script type='text/javascript' src='common/angular.min.js'></script>
+ 		<script type='text/javascript' src='common/angular-ui-router.js'></script>
+		<script type='text/javascript' src='common/directivesApp.js'></script>
+		<script type="text/javascript" src="features/board/boardCtrl.js"></script>
+		<script type="text/javascript" src="features/tile/tileCtrl.js"></script>
+		<script type="text/javascript" src="features/tile/tileDirective.js"></script>
+		<script type="text/javascript" src="features/player/playerDirective.js"></script>
+		<script type="text/javascript" src="features/die/dieDirective.js"></script>
+		<link href="common/directives.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body>
+		<div class='dice-container'>
+			<game-die sides='6'></game-die>
+			<game-die sides='6'></game-die>
+		</div>
+		<div id='divBoard' ng-controller='boardCtrl'>
+			<player ng-repeat='player in players' name='{{($index + 1)}}' color='{{player.color}}' top='{{player.top}}' left='{{player.left}}'></player>
+			<tile ng-repeat='tile in tiles' type='{{tile.type}}' top='{{tile.top}}' left='{{tile.left}}' ng-click='movePlayerTo($index);'></tile>
+		</div>
+	</body>
+</html>

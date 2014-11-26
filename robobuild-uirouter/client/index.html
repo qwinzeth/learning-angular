@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" ng-app='robobuildApp'>
+	<head>
+		<meta charset="utf-8">
+        <title>Learning UI Router</title>
+ 		<script type='text/javascript' src='js/angular.min.js'></script>
+        <script src="js/angular-ui-router.js"></script>
+		<script type="text/javascript" src="js/robobuildCtrl.js"></script>
+		<link href="css/robobuild.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body ng-controller='robobuildCtrl'>
+		<div class='pane-left'>
+			<div>Current robot:</div>
+			<div class='robot-display'>
+				<div>{{chosenBody.description}}</div>
+				<div>{{chosenHands.description}}</div>
+				<div>{{chosenLegs.description}}</div>
+			</div>
+			<div ui-view></div>
+		</div>
+		<div class='pane-right'>
+			<div>Situation: {{currentSituation.description}}</div>
+			<div class='pane-results'>Results: {{runResults}}</div>
+		</div>
+	</body>
+</html>

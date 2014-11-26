@@ -1,0 +1,76 @@
+base-font-size = 30px
+board-size = 230px
+board-bgcolor = #FF9966
+board-current-guess-bgcolor = #FFCC99
+peg-size = 20px
+pegs-placeholder-color = #996633
+
+body
+	text-align center
+	
+.title-main
+	font-size base-font-size
+
+.board
+	margin 0px auto 0px auto
+	width board-size
+	text-align left
+	border 1px solid black
+	background-color board-bgcolor
+
+.pegs
+	margin 0px
+	padding 0px
+
+.peg
+	border-radius (peg-size/2)px
+	width peg-size
+	height peg-size
+.peg-info
+	border-radius (peg-size/4)px
+	width (peg-size/2)px
+	height (peg-size/2)px
+allpegs = '.peg' '.peg-info'
+for pegtype in allpegs
+	{pegtype}
+		display inline-block
+		margin 5px
+		border 1px solid black
+.peg.red
+	background-color red
+.peg.green
+	background-color green
+.peg.blue
+	background-color blue
+.peg.yellow
+	background-color yellow
+for pegtype in allpegs
+	{pegtype}.white
+		background-color white
+for pegtype in allpegs
+	{pegtype}.black
+		background-color black
+
+.info-pegs
+	display inline-block
+
+#divColorSelector
+	border 1px solid black
+	background-color board-bgcolor
+	display inline-block
+	z-index 1
+	margin-top 2px
+
+#divGuessButton
+	margin-top 2px
+
+.current-guess-row
+	background-color board-current-guess-bgcolor
+	
+.pegs-placeholder
+	border-bottom 1px solid black
+	border-right 1px solid black
+	background-color pegs-placeholder-color
+	display inline-block
+	.peg
+		visibility hidden

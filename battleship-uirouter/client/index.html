@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" ng-app='uirouterApp'>
+	<head>
+		<meta charset="utf-8">
+        <title>Learning UI Router</title>
+ 		<script type='text/javascript' src='js/angular.min.js'></script>
+        <script src="js/angular-ui-router.js"></script>
+		<script type="text/javascript" src="js/uirouterCtrl.js"></script>
+		<link href="css/uirouter.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body ng-controller='UIRouterCtrl'>
+		<div id='divBoards'>
+			<div>Sunk: {{aiSunkBoats}}</div>
+			<div id='aiBoard'>
+				<div ng-repeat='row in aiGrid' class='row'>
+					<div class='cell'>
+						{{rowHeaders[$index].Name}}
+					</div>
+					<div ng-repeat='cell in row' class='cell'
+						ng-class='{"cell-content-empty": !cell.guessed,
+							"cell-content-miss": !cell.boat && cell.guessed,
+							"cell-content-hit": cell.boat && cell.guessed}'
+						ng-click='aiCellClicked(cell);'>
+						{{getAICellDisplayChar(cell)}}
+					</div>
+				</div>
+			</div>
+			<div id='myBoard'>
+				<div class='row row-header'>
+					<div class='cell invisible'>&nbsp;</div>
+					<div ng-repeat='colHeader in colHeaders' class='cell'>
+						{{colHeader.Name}}
+					</div>
+				</div>
+				<div ng-repeat='row in myGrid' class='row'>
+					<div class='cell'>
+						{{rowHeaders[$index].Name}}
+					</div>
+					<div ng-repeat='cell in row' class='cell'
+						ng-class='{"cell-content-empty": !cell.guessed,
+							"cell-content-miss": !cell.boat && cell.guessed,
+							"cell-content-hit": cell.boat && cell.guessed}'
+						ng-click='myCellClicked(cell);'>
+						{{cell.displayChar}}
+					</div>
+				</div>
+				<div>Sunk: {{mySunkBoats}}</div>
+			</div>
+		</div>
+		<div id='divHelp' ui-view></div>
+	</body>
+</html>

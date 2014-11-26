@@ -1,0 +1,25 @@
+{
+  "name": "uirouter",
+  "version": "1.0.0",
+  "description": "Learning ui router",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "angular-mocks": "^1.3.2",
+    "express": "^4.10.2",
+    "jasmine": "^2.0.1",
+    "karma": "^0.12.25",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-cli": "0.0.4",
+    "karma-jasmine": "^0.2.3",
+    "stylus": "^0.49.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jasmine tests"
+  },
+  "author": "",
+  "license": "ISC"
+}

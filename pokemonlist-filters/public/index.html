@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" ng-app='filtersApp'>
+	<head>
+		<meta charset="utf-8">
+        <title>Learning Angular Filters</title>
+ 		<script type='text/javascript' src='common/angular.min.js'></script>
+		<script type='text/javascript' src='common/filtersApp.js'></script>
+    </head>
+    <body ng-controller='filtersCtrl'>
+		<div style='display: inline-block;'>
+			<table border='1'>
+				<tr>
+					<th>Name</th>
+					<th>Type(s)</th>
+				</tr>
+				<tr ng-repeat='poke in pokemon | filter:filterText | typesFilter:filterType'>
+					<td>{{poke.name}}</td>
+					<td>
+						<div ng-repeat='type in poke.types'>
+							{{type}}
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div style='display: inline-block; vertical-align: top;'>
+			<div>Text Search: <input ng-model='filterText' /></div>
+			<div>Type Search: <input ng-model='filterType' /></div>
+		</div>
+	</body>
+</html>

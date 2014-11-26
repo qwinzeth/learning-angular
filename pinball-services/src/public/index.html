@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" ng-app='pinballApp'>
+	<head>
+		<meta charset="utf-8">
+        <title>Learning Angular</title>
+ 		<script type='text/javascript' src='common/lodash.js'></script>
+ 		<script type='text/javascript' src='common/angular.min.js'></script>
+ 		<script type='text/javascript' src='common/angular-ui-router.js'></script>
+		<script type='text/javascript' src='common/pinball.js'></script>
+		<script type='text/javascript' src='common/controllers/pinball-controller.js'></script>
+		<script type='text/javascript' src='common/services/physics-service.js'></script>
+		<link rel='stylesheet' type='text/css' href='styles/pinball.css' />
+    </head>
+    <body ng-controller='pinballCtrl' ng-keydown='handleKey($event)'>
+		<svg ng-attr-width='{{machineWidth}}' ng-attr-height='{{machineHeight}}' class='pinball-machine'>
+			<circle ng-repeat='pinball in pinballs' ng-attr-cx='{{pinball.x}}' ng-attr-cy='{{pinball.y}}' ng-attr-r='{{pinball.r}}' stroke='black' stroke-width='1' fill='silver' />
+			<line ng-repeat='wall in walls[level.index]' ng-attr-x1='{{wall.x1}}' ng-attr-y1='{{wall.y1}}' ng-attr-x2='{{wall.x2}}' ng-attr-y2='{{wall.y2}}' stroke='black' stroke-width='1' />
+			<rect ng-repeat='teleporter in teleporters[level.index]' ng-attr-x='{{teleporter.x}}' ng-attr-y='{{teleporter.y}}' ng-attr-width='{{teleporter.width}}' ng-attr-height='{{teleporter.height}}' stroke='black' stroke-width='1' fill='purple' />
+			<rect ng-repeat='bumper in bumpers[level.index]' ng-attr-x='{{bumper.x}}' ng-attr-y='{{bumper.y}}' ng-attr-width='{{bumper.width}}' ng-attr-height='{{bumper.height}}' stroke='black' stroke-width='1' fill='red' />
+			<rect ng-attr-x='{{launcher.x}}' ng-attr-y='{{launcher.y}}' ng-attr-width='{{launcher.width}}' ng-attr-height='{{launcher.height}}' stroke='black' stroke-width='1' fill='green' />
+			<line ng-repeat='flipper in leftFlippers' ng-attr-x1='{{flipper.x1}}' ng-attr-y1='{{flipper.y1}}' ng-attr-x2='{{flipper.x2}}' ng-attr-y2='{{flipper.y2}}' stroke='blue' stroke-width='2' />
+			<line ng-repeat='flipper in rightFlippers' ng-attr-x1='{{flipper.x1}}' ng-attr-y1='{{flipper.y1}}' ng-attr-x2='{{flipper.x2}}' ng-attr-y2='{{flipper.y2}}' stroke='blue' stroke-width='2' />
+		</svg>
+		<div class='score'>Level: 
+			<select ng-model='level' ng-options='lev.name for lev in levels'></select>
+		</div>
+		<div class='score'>Score: {{score}}</div>
+		<div class='score'>High Score: {{highScore}}</div>
+		<div><input type='button' ng-click='resetGame();' value='Try Again (.)' /></div>
+	</body>
+</html>

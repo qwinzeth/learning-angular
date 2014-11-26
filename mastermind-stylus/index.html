@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" ng-app='stylusApp'>
+	<head>
+		<meta charset="utf-8">
+        <title>Learning Stylus</title>
+ 		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js'></script>
+        <script type="text/javascript" src="js/stylusCtrl.js"></script>
+       <link href="css/main.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body ng-controller='StylusCtrl'>
+        <div class='title-main'>
+			<div ng-show = 'stillPlaying()'>Yay Stylus</div>
+			<div ng-show = 'youWin()'>You Win!</div>
+			<div ng-show = 'youLose()'>You Lose.</div>
+		</div>
+
+		<div class='board'>
+			<div class='pegs' ng-show='showAnswers()'>
+				<div ng-repeat='answerPeg in answer' class='peg' ng-class='answerPeg.colorName'></div>
+			</div>
+			<div class = 'pegs-placeholder' ng-hide = 'showAnswers()'>
+				<div class='peg'></div>
+				<div class='peg'></div>
+				<div class='peg'></div>
+				<div class='peg'></div>
+			</div>
+			<div ng-repeat='guessRow in guesses' class='pegs' ng-class='{"current-guess-row": $index == currentGuessRow}'>
+				<div ng-repeat='guessPeg in guessRow.guessPegs' ng-click='clickedPeg(guessPeg);' class='peg' ng-class='guessPeg.colorName'></div>
+				<div class='info-pegs'>
+					<div ng-repeat='infoPeg in guessRow.infoPegs' class='peg-info' ng-class='infoPeg.colorName'></div>
+				</div>
+			</div>
+		</div>
+		
+		<div ng-show='showColorSelection()' id='divColorSelector'>
+			<div ng-repeat='colorString in colorNames' class='peg' ng-class='colorString'
+				ng-click='selectedColor(colorString);'></div>
+		</div>
+		
+		<div ng-show='showGuessButton()' id='divGuessButton'>
+			<input type='button' value='Guess' ng-click='makeGuess();' />
+		</div>
+    </body>
+</html>

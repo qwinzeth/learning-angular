@@ -1,0 +1,39 @@
+cellSize = 20
+
+#divBoards
+	text-align center
+
+#myBoard
+	margin-top 10px
+	
+#divHelp
+	text-align center
+	
+.row
+	margin 0px
+	padding 0px
+	height (cellSize+2)px
+
+.row.row-header
+	margin-bottom 2px
+
+.cell
+	width (cellSize)px
+	height (cellSize)px
+	display inline-block
+	margin 0px
+	padding 0px
+	border 1px solid black
+
+.invisible
+	visibility hidden
+	
+.cell-content-empty
+	background-color #00FFFF
+	cursor pointer
+	
+.cell-content-miss
+	background-color #FFFFFF
+	
+.cell-content-hit
+	background-color #FF0000

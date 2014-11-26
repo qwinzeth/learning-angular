@@ -1,0 +1,16 @@
+{
+  "name": "angularDirectives",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.10.2",
+    "stylus": "^0.49.3",
+    "ui-router": "0.0.1"
+  }
+}
