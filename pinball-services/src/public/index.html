@@ -16,7 +16,7 @@
 			<circle ng-repeat='pinball in pinballs' ng-attr-cx='{{pinball.x}}' ng-attr-cy='{{pinball.y}}' ng-attr-r='{{pinball.r}}' stroke='black' stroke-width='1' fill='silver' />
 			<line ng-repeat='wall in walls[level.index]' ng-attr-x1='{{wall.x1}}' ng-attr-y1='{{wall.y1}}' ng-attr-x2='{{wall.x2}}' ng-attr-y2='{{wall.y2}}' stroke='black' stroke-width='1' />
 			<rect ng-repeat='teleporter in teleporters[level.index]' ng-attr-x='{{teleporter.x}}' ng-attr-y='{{teleporter.y}}' ng-attr-width='{{teleporter.width}}' ng-attr-height='{{teleporter.height}}' stroke='black' stroke-width='1' fill='purple' />
-			<rect ng-repeat='bumper in bumpers[level.index]' ng-attr-x='{{bumper.x}}' ng-attr-y='{{bumper.y}}' ng-attr-width='{{bumper.width}}' ng-attr-height='{{bumper.height}}' stroke='black' stroke-width='1' fill='red' />
+			<rect ng-repeat='bumper in bumpers[level.index]' ng-attr-x='{{bumper.x}}' ng-attr-y='{{bumper.y}}' ng-attr-width='{{bumper.width}}' ng-attr-height='{{bumper.height}}' stroke='black' stroke-width='1' fill='{{bumper.fill}}' />
 			<rect ng-attr-x='{{launcher.x}}' ng-attr-y='{{launcher.y}}' ng-attr-width='{{launcher.width}}' ng-attr-height='{{launcher.height}}' stroke='black' stroke-width='1' fill='green' />
 			<line ng-repeat='flipper in leftFlippers' ng-attr-x1='{{flipper.x1}}' ng-attr-y1='{{flipper.y1}}' ng-attr-x2='{{flipper.x2}}' ng-attr-y2='{{flipper.y2}}' stroke='blue' stroke-width='2' />
 			<line ng-repeat='flipper in rightFlippers' ng-attr-x1='{{flipper.x1}}' ng-attr-y1='{{flipper.y1}}' ng-attr-x2='{{flipper.x2}}' ng-attr-y2='{{flipper.y2}}' stroke='blue' stroke-width='2' />

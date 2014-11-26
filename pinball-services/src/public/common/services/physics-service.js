@@ -74,6 +74,8 @@ pinballApp.Services.factory('physics', function physicsFactory(){
 		};
 	}
 
+	var fills = ['red', 'orange', 'yellow', 'lime', 'green', 'cyan', 'blue', 'purple', 'black', 'silver', 'white'];
+	
 	return {
 		applyGravity: function applyGravity(obj, millis){
 			if(obj.yacc < 20){
@@ -137,6 +139,8 @@ pinballApp.Services.factory('physics', function physicsFactory(){
 					obj.xspd = -obj.xspd;
 					obj.yspd = -obj.yspd;
 					score += 50;
+					bumper.fillIndex = (bumper.fillIndex + 1) % fills.length;
+					bumper.fill = fills[bumper.fillIndex];
 					applyMovement(obj, millis);
 					if(Math.abs(obj.xspd) > 2){
 						obj.xspd /= 2;
@@ -184,7 +188,9 @@ pinballApp.Services.factory('physics', function physicsFactory(){
 				width: width,
 				height: height,
 				gotoX: gotoX,
-				gotoY: gotoY
+				gotoY: gotoY,
+				fill: 'red',
+				fillIndex: 0
 			};
 		},
 		
