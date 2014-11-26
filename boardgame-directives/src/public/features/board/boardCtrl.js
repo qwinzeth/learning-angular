@@ -6,37 +6,50 @@ directivesApp.Controllers
         function boardCtrl($scope, $window) {
 			var tileSize = 50;
 		
+			$scope.requireChoice = false;
+		
 			$scope.tiles = [
 				{type: 'start', top: '0', left: '0', next: []},
 				{type: 'normal', top: '10', left: '50', next: []},
 				{type: 'normal', top: '30', left: '100', next: []},
 				{type: 'move-again', top: '50', left: '150', next: []},
 				
-				{type: 'move-again', top: '30', left: '200', next: []},
-				{type: 'normal', top: '30', left: '250', next: []},
-				{type: 'move-again', top: '30', left: '300', next: []},
-				{type: 'normal', top: '30', left: '350', next: []},
-				{type: 'move-again', top: '30', left: '400', next: []},
+					{type: 'move-again', top: '30', left: '200', next: []},
+					{type: 'normal', top: '30', left: '250', next: []},
+					{type: 'move-again', top: '30', left: '300', next: []},
+					{type: 'normal', top: '30', left: '350', next: []},
+					{type: 'move-again', top: '30', left: '400', next: []},
 
-				{type: 'normal', top: '90', left: '200', next: []},
-				{type: 'normal', top: '100', left: '250', next: []},
-				{type: 'normal', top: '110', left: '300', next: []},
-				{type: 'normal', top: '130', left: '350', next: []},
-				{type: 'finish', top: '150', left: '400', next: []},
-				{type: 'normal', top: '160', left: '450', next: []},
-				{type: 'normal', top: '110', left: '475', next: []},
-				{type: 'normal', top: '60', left: '490', next: []},
-				{type: 'normal', top: '10', left: '500', next: []}
+					{type: 'normal', top: '90', left: '200', next: []},
+					{type: 'normal', top: '100', left: '250', next: []},
+					{type: 'normal', top: '110', left: '300', next: []},
+					{type: 'normal', top: '130', left: '350', next: []},
+					{type: 'normal', top: '150', left: '400', next: []},
+					{type: 'normal', top: '160', left: '450', next: []},
+
+						{type: 'normal', top: '110', left: '475', next: []},
+						{type: 'normal', top: '60', left: '490', next: []},
+						{type: 'finish', top: '10', left: '500', next: []},
+						
+						{type: 'move-again', top: '200', left: '500', next: []},
+						{type: 'normal', top: '200', left: '550', next: []},
+						{type: 'normal', top: '200', left: '600', next: []}
 			];
 
 			for(var t = 0; t < 8; t++){
 				$scope.tiles[t].next.push($scope.tiles[t + 1]);
 			}
-			for(var t = 9; t < $scope.tiles.length - 1; t++){
+			for(var t = 9; t < 17; t++){
+				$scope.tiles[t].next.push($scope.tiles[t + 1]);
+			}
+			for(var t = 18; t < $scope.tiles.length - 1; t++){
 				$scope.tiles[t].next.push($scope.tiles[t + 1]);
 			}
 			$scope.tiles[3].next.push($scope.tiles[9]);
 			$scope.tiles[8].next.push($scope.tiles[0]);
+			
+			$scope.tiles[14].next.push($scope.tiles[18]);
+			$scope.tiles[17].next.push($scope.tiles[0]);
 			$scope.tiles[$scope.tiles.length - 1].next.push($scope.tiles[0]);
 
 			$scope.players = [];
@@ -130,18 +143,19 @@ directivesApp.Controllers
 					$scope.movesRemaining = 0;
 					$scope.currentPlayer = $scope.currentPlayer.next;
 				}else{
-					//wait for choice
+					$scope.requireChoice = true;
 				}
 
 				$scope.$apply();
 			}
 			
 			function choosePath(chosenTile){
-				if($scope.currentPlayer.tile.next.length < 2
+				if(!$scope.requireChoice
 				|| -1 === _.indexOf($scope.currentPlayer.tile.next, chosenTile)){
 					return;
 				}
 				
+				$scope.requireChoice = false;
 				moveAndContinue(chosenTile);
 			}
 			

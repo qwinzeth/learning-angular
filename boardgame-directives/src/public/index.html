@@ -19,6 +19,7 @@
 			<game-die ng-repeat='die in dice' model='dice[$index]' ng-click='rollDice();'></game-die>
 			<div class='dice-total'>{{movesRemaining}}</div>
 			<div class='current-player-header'>Player {{currentPlayer.name}}</div>
+			<div class='choice-required' ng-show='requireChoice'>Click to choose the next tile.</div>
 		</div>
 		<div id='divBoard'>
 			<player ng-repeat='player in players' name='{{(player.name)}}' color='{{player.color}}' top='{{player.top}}' left='{{player.left}}'></player>
