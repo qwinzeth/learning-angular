@@ -8,6 +8,9 @@ directivesApp.Controllers
 			case 'move-again':
 				$scope.text = 'Again';
 			break;
+			case 'skip-turn':
+				$scope.text = 'Skip';
+			break;
 			case 'normal':
 				$scope.text = '';
 			break;

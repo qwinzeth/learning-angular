@@ -22,17 +22,17 @@ directivesApp.Controllers
 
 					{type: 'normal', top: '90', left: '200', next: []},
 					{type: 'normal', top: '100', left: '250', next: []},
-					{type: 'normal', top: '110', left: '300', next: []},
+					{type: 'skip-turn', top: '110', left: '300', next: []},
 					{type: 'normal', top: '130', left: '350', next: []},
 					{type: 'normal', top: '150', left: '400', next: []},
 					{type: 'normal', top: '160', left: '450', next: []},
 
-						{type: 'normal', top: '110', left: '475', next: []},
-						{type: 'normal', top: '60', left: '490', next: []},
+						{type: 'skip-turn', top: '110', left: '475', next: []},
+						{type: 'skip-turn', top: '60', left: '490', next: []},
 						{type: 'finish', top: '10', left: '500', next: []},
 						
 						{type: 'move-again', top: '200', left: '500', next: []},
-						{type: 'normal', top: '200', left: '550', next: []},
+						{type: 'skip-turn', top: '200', left: '550', next: []},
 						{type: 'normal', top: '200', left: '600', next: []}
 			];
 
@@ -59,7 +59,8 @@ directivesApp.Controllers
 				$scope.players.push({
 					name: 1 + p,
 					tile: $scope.tiles[0],
-					color: colors[p]
+					color: colors[p],
+					skipTurns: 0
 				});
 			}
 			for(var p = 0; p < playerCount - 1; p++){
@@ -136,12 +137,11 @@ directivesApp.Controllers
 			}
 			
 			function autostepPlayer(){
-				$scope.currentPlayer;
 				if($scope.currentPlayer.tile.next.length == 1){
 					moveAndContinue($scope.currentPlayer.tile.next[0]);
 				}else if($scope.currentPlayer.tile.next.length == 0){
 					$scope.movesRemaining = 0;
-					$scope.currentPlayer = $scope.currentPlayer.next;
+					advanceCurrentPlayer();
 				}else{
 					$scope.requireChoice = true;
 				}
@@ -166,8 +166,19 @@ directivesApp.Controllers
 					$window.setTimeout(autostepPlayer, 700);
 				}else{
 					if($scope.currentPlayer.tile.type !== 'move-again'){
-						$scope.currentPlayer = $scope.currentPlayer.next;
+						if($scope.currentPlayer.tile.type === 'skip-turn'){
+							$scope.currentPlayer.skipTurns++;
+						}
+						advanceCurrentPlayer();
 					}
+				}
+			}
+			
+			function advanceCurrentPlayer(){
+				$scope.currentPlayer = $scope.currentPlayer.next;
+				while($scope.currentPlayer.skipTurns > 0){
+					$scope.currentPlayer.skipTurns--;
+					$scope.currentPlayer = $scope.currentPlayer.next;
 				}
 			}
 		}
