@@ -5,27 +5,56 @@
         <title>Learning Angular Filters</title>
  		<script type='text/javascript' src='common/angular.min.js'></script>
 		<script type='text/javascript' src='common/filtersApp.js'></script>
+		<style>
+			.type-effectiveness-20{
+				background-color: #99FF99;
+			}
+			.type-effectiveness-0{
+				background-color: #CCCCCC;
+			}
+			.type-effectiveness-5{
+				background-color: #FFFF99;
+			}
+		</style>
     </head>
     <body ng-controller='filtersCtrl'>
-		<div style='display: inline-block;'>
+		<div>
+			<div style='display: inline-block;'>
+				<table border='1'>
+					<tr>
+						<th ng-click='selectPokemon(null);'>Name</th>
+						<th ng-click='selectPokemon(null);'>Type(s)</th>
+					</tr>
+					<tr ng-repeat='poke in pokemon | filter:filterText | typesFilter:filterType'>
+						<td ng-click='selectPokemon(poke);'>{{poke.name}}</td>
+						<td>
+							<div ng-repeat='type in poke.types' ng-click='selectPokemon(poke);'>
+								{{type}}
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div style='display: inline-block; vertical-align: top;'>
+				<div>Text Search: <input ng-model='filterText' /></div>
+				<div>Type Search: <input ng-model='filterType' /></div>
+			</div>
+		</div>
+		<div>
 			<table border='1'>
 				<tr>
-					<th>Name</th>
-					<th>Type(s)</th>
+					<th><input type='button' value='Clear' ng-click='selectAttackType(null); selectPokemon(null);' /></th>
+					<th ng-repeat='typematch in typeMatching | defendingTypesFilter:selectedPokemon'
+						ng-click='selectPokemon({name: "?", types: [typematch.name]});'>
+						{{typematch.name}}
+					</th>
 				</tr>
-				<tr ng-repeat='poke in pokemon | filter:filterText | typesFilter:filterType'>
-					<td>{{poke.name}}</td>
-					<td>
-						<div ng-repeat='type in poke.types'>
-							{{type}}
-						</div>
-					</td>
+				<tr ng-repeat='typematch in typeMatching | defendingNumbersFilter:selectedPokemon | attackingTypesFilter:selectedAttackType'
+					ng-click='selectAttackType(typematch);'>
+					<th>{{typematch.name}}</th>
+					<td ng-repeat='damage in typematch.damage track by $index' ng-class='"type-effectiveness-" + (damage * 10)'>{{damage}}</td>
 				</tr>
 			</table>
-		</div>
-		<div style='display: inline-block; vertical-align: top;'>
-			<div>Text Search: <input ng-model='filterText' /></div>
-			<div>Type Search: <input ng-model='filterType' /></div>
 		</div>
 	</body>
 </html>
