@@ -7,7 +7,7 @@ filtersApp.controller("filtersCtrl", function filtersCtrl($scope){
 	$scope.selectedAttackType = null;
 	
 	$scope.typeMatching = [
-//				NOR	FIG	FLY	POI	GRO	ROC	BUG	GHO	STE	FIR	WAT	GRA	ELE	PSY	ICE	DRA	DAR
+//							NOR	FIG	FLY	POI	GRO	ROC	BUG	GHO	STE	FIR	WAT	GRA	ELE	PSY	ICE	DRA	DAR
 { name: 'Normal',	damage:	[1,	1,	1,	1,	1,	.5,	1,	0,	.5,	1,	1,	1,	1,	1,	1,	1,	1]},
 { name: 'Fighting',	damage:	[2,	1,	.5,	.5,	1,	2,	.5,	0,	2,	1,	1,	1,	1,	.5,	2,	1,	2]},
 { name: 'Flying',	damage:	[1,	2,	1,	1,	1,	.5,	2,	1,	.5,	1,	1,	2,	.5,	1,	1,	1,	1]},

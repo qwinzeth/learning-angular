@@ -52,7 +52,9 @@
 				<tr ng-repeat='typematch in typeMatching | defendingNumbersFilter:selectedPokemon | attackingTypesFilter:selectedAttackType'
 					ng-click='selectAttackType(typematch);'>
 					<th>{{typematch.name}}</th>
-					<td ng-repeat='damage in typematch.damage track by $index' ng-class='"type-effectiveness-" + (damage * 10)'>{{damage}}</td>
+					<td ng-repeat='damage in typematch.damage track by $index' ng-class='"type-effectiveness-" + (damage * 10)'>
+						{{damage}}
+					</td>
 				</tr>
 			</table>
 		</div>
