@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" ng-app='roboexploreApp'>
+	<head>
+		<meta charset="utf-8">
+        <title>Learning Angular</title>
+		<!-- build:js scripts.js -->
+ 		<script type='text/javascript' src='common/angular.min.js'></script>
+ 		<script type='text/javascript' src='common/angular-ui-router.js'></script>
+ 		<script type='text/javascript' src='common/lodash.js'></script>
+ 		<script type='text/javascript' src='common/roboexploreApp.js'></script>
+ 		<script type='text/javascript' src='features/world/worldCtrl.js'></script>
+ 		<script type='text/javascript' src='features/tile/tileDirective.js'></script>
+ 		<script type='text/javascript' src='features/robot/robotDirective.js'></script>
+ 		<script type='text/javascript' src='features/robot/robotCtrl.js'></script>
+		<!-- endbuild -->
+		<!-- build:css styles.css -->
+		<link href="css/roboexplore.css" type="text/css" rel="stylesheet" />
+		<!-- endbuild -->
+    </head>
+    <body>
+		<div ui-view></div>
+	</body>
+</html>

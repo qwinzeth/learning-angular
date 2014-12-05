@@ -1,0 +1,83 @@
+.world-tile {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  vertical-align: middle;
+}
+.world-tile-elevation-0 {
+  background-color: #00c850;
+}
+.world-tile-elevation-1 {
+  background-color: #15c050;
+}
+.world-tile-elevation-2 {
+  background-color: #2bb750;
+}
+.world-tile-elevation-3 {
+  background-color: #40af50;
+}
+.world-tile-elevation-4 {
+  background-color: #55a750;
+}
+.world-tile-elevation-5 {
+  background-color: #6a9e50;
+}
+.world-tile-elevation-6 {
+  background-color: #809650;
+}
+.world-tile-elevation-7 {
+  background-color: #958e50;
+}
+.world-tile-elevation-8 {
+  background-color: #aa8550;
+}
+.world-tile-elevation-9 {
+  background-color: #bf7d50;
+}
+.world-tile-elevation-10 {
+  background-color: #d47550;
+}
+.world-tile-elevation-11 {
+  background-color: #ea6c50;
+}
+.world-tile-elevation-12 {
+  background-color: #ff6450;
+}
+.world-tile-elevation--1 {
+  background-color: #00f;
+}
+.world-container {
+  position: relative;
+}
+.robot {
+  position: absolute;
+}
+.robot-controls {
+  position: absolute;
+  left: 440px;
+  top: 25px;
+}
+.robot-controls input {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+}
+.robot-button-left {
+  left: -25px;
+  top: 0px;
+}
+.robot-button-right {
+  left: 25px;
+  top: 0px;
+}
+.robot-button-up {
+  left: 0px;
+  top: -25px;
+}
+.robot-button-down {
+  left: 0px;
+  top: 25px;
+}
