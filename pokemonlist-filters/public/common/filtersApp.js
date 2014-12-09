@@ -65,7 +65,7 @@ filtersApp.controller("filtersCtrl", function filtersCtrl($scope){
 		types: ["Psychic"]
 	}, {
 		name: "Gengar",
-		types: ["Ghost"]
+		types: ["Ghost", "Poison"]
 	}, {
 		name: "Dragonite",
 		types: ["Flying", "Dragon"]
