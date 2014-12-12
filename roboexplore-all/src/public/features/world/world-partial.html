@@ -1,6 +1,8 @@
 <div class='world-container' ng-controller='worldCtrl'>
 	<robot></robot>
+	<finish left='{{finishLeft}}' top='{{finishTop}}'></finish>
 	<div ng-repeat='tileRow in tileRows'>
 		<tile ng-repeat='tile in tileRow' elevation='{{tile.elevation}}'></tile>
 	</div>
+	<div>Time: {{time}}</div>
 </div>

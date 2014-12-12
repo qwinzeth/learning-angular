@@ -5,7 +5,10 @@ roboexploreApp
     .directive('robot',
         function robotDirective() {
 			function setPosition(scope, element, attrs){
-				scope.updatePosition(0, 0);
+				scope.top = 0;
+				scope.topPixels = '0px';
+				scope.left = 0;
+				scope.leftPixels = '0px';
 			}
 			
             return {

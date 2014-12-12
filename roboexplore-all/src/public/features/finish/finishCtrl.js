@@ -1,21 +1,9 @@
 'use strict';
 roboexploreApp.Controllers
-    .controller('robotCtrl', [
+    .controller('finishCtrl', [
         '$scope',
-        function robotCtrl($scope) {
+        function finishCtrl($scope) {
             $scope.updatePosition = function updatePosition(newTop, newLeft){
-				if(newTop < 0 || newTop >= $scope.tileRows.length || newLeft < 0 || newLeft >= $scope.tileRows.length){
-					return;
-				}
-
-				var elevationChange = $scope.tileRows[newTop][newLeft].elevation - $scope.tileRows[$scope.top][$scope.left].elevation;
-				if(elevationChange > 1){
-					return;
-				}else if(elevationChange == 1){
-					$scope.time += .5;
-				}
-
-				$scope.time += Math.abs($scope.top - newTop) + Math.abs($scope.left - newLeft);
 				$scope.top = newTop;
 				$scope.topPixels = newTop * 20 + 'px';
 				$scope.left = newLeft;
