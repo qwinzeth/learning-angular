@@ -1,7 +1,8 @@
 var roboexploreApp = {
-	App: angular.module('roboexploreApp', ['ui.router', 'roboexploreDirectives', 'roboexploreControllers']),
+	App: angular.module('roboexploreApp', ['ui.router', 'roboexploreDirectives', 'roboexploreControllers', 'roboexploreServices']),
 	Directives: angular.module('roboexploreDirectives', []),
-	Controllers: angular.module('roboexploreControllers', [])
+	Controllers: angular.module('roboexploreControllers', []),
+	Services: angular.module('roboexploreServices', [])
 };
 
 roboexploreApp.App.config(uirouteConfig);
