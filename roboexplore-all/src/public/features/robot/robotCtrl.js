@@ -57,7 +57,7 @@ roboexploreApp.Controllers
 			$scope.left = 0;
 			$scope.leftPixels = '0px';
 			if($scope.isai){
-				RobotAI.moveSomewhere($scope, 1000);
+				RobotAI.moveSomewhere($scope, 500);
 			}
 		}
     ]);
