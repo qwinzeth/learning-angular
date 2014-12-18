@@ -22,31 +22,31 @@ roboexploreApp.Controllers
 			var currentLevel = -1;
 			
 			currentLevel++;
-			$scope.tileRows[currentLevel] = [];
+			$scope.tileRows[currentLevel] = {name: "Beginner's Hill", tiles: []};
 			for(var i = 0; i < $scope.worldHeight; i++){
-				$scope.tileRows[currentLevel][i] = [];
+				$scope.tileRows[currentLevel].tiles[i] = [];
 				for(var j = 0; j < $scope.worldWidth; j++){
-					$scope.tileRows[currentLevel][i][j] = {elevation: Math.floor($scope.maxElevation * i / $scope.worldHeight)};
+					$scope.tileRows[currentLevel].tiles[i][j] = {elevation: Math.floor($scope.maxElevation * i / $scope.worldHeight)};
 				}
 			}
 
 			currentLevel++;
-			$scope.tileRows[currentLevel] = [];
+			$scope.tileRows[currentLevel] = {name: "The First Wall", tiles: []};
 			for(var i = 0; i < $scope.worldHeight; i++){
-				$scope.tileRows[currentLevel][i] = [];
+				$scope.tileRows[currentLevel].tiles[i] = [];
 				for(var j = 0; j < $scope.worldWidth; j++){
 					var celev = 1;
 					if(i == 6 && j >= 3 && j <= 15){
 						celev = 10;
 					}
-					$scope.tileRows[currentLevel][i][j] = {elevation: celev};
+					$scope.tileRows[currentLevel].tiles[i][j] = {elevation: celev};
 				}
 			}
 
 			currentLevel++;
-			$scope.tileRows[currentLevel] = [];
+			$scope.tileRows[currentLevel] = {name: "The Trap", tiles: []};
 			for(var i = 0; i < $scope.worldHeight; i++){
-				$scope.tileRows[currentLevel][i] = [];
+				$scope.tileRows[currentLevel].tiles[i] = [];
 				for(var j = 0; j < $scope.worldWidth; j++){
 					var celev = 0;
 					if(i >= 1 && i <= 10 && j == 14){
@@ -54,32 +54,32 @@ roboexploreApp.Controllers
 					}else if(i == 10 && j >= 1 && j <= 13){
 						celev = 12;
 					}
-					$scope.tileRows[currentLevel][i][j] = {elevation: celev};
+					$scope.tileRows[currentLevel].tiles[i][j] = {elevation: celev};
 				}
 			}
 
 			currentLevel++;
-			$scope.tileRows[currentLevel] = [];
+			$scope.tileRows[currentLevel] = {name: "The Narrow Climb", tiles: []};
 			for(var i = 0; i < $scope.worldHeight; i++){
-				$scope.tileRows[currentLevel][i] = [];
+				$scope.tileRows[currentLevel].tiles[i] = [];
 				for(var j = 0; j < $scope.worldWidth; j++){
-					if(i >=9 && i <= 11 && j <=2){
-						$scope.tileRows[currentLevel][i][j] = {elevation: -1};
+					if(i >= 9 && i <= 11 && j <= 2){
+						$scope.tileRows[currentLevel].tiles[i][j] = {elevation: -1};
 					}else if(Math.abs(i - j) <= 1){
 						if(i < 13){
-							$scope.tileRows[currentLevel][i][j] = {elevation: i};
+							$scope.tileRows[currentLevel].tiles[i][j] = {elevation: i};
 						}else{
-							$scope.tileRows[currentLevel][i][j] = {elevation: $scope.maxElevation};
+							$scope.tileRows[currentLevel].tiles[i][j] = {elevation: $scope.maxElevation};
 						}
 					}else{
-						$scope.tileRows[currentLevel][i][j] = {elevation: 0};
+						$scope.tileRows[currentLevel].tiles[i][j] = {elevation: 0};
 					}
 				}
 			}
 			
 			$scope.currentTileRows = 0;
 			$scope.getVisibleTile = function getVisibleTile(top, left){
-				return $scope.tileRows[$scope.currentTileRows][top][left];
+				return $scope.tileRows[$scope.currentTileRows].tiles[top][left];
 			}
 			
 			$scope.loadNextLevel = function loadNextLevel(){

@@ -1,9 +1,10 @@
 <div class='world-container' ng-controller='worldCtrl'>
 	<robot ng-repeat='robot in robots' robotid='{{$index}}' isai='{{robot.isai}}' color='{{robot.color}}'></robot>
 	<finish left='{{finishLeft}}' top='{{finishTop}}'></finish>
-	<div ng-repeat='tileRow in tileRows[currentTileRows]'>
+	<div ng-repeat='tileRow in tileRows[currentTileRows].tiles'>
 		<tile ng-repeat='tile in tileRow' elevation='{{tile.elevation}}'></tile>
 	</div>
+	<div class='level-title'>{{tileRows[currentTileRows].name}}</div>
 	<div ng-repeat='robot in robots'>Time: {{robot.time}}</div>
 	<div><input type='button' value='Next' ng-click='loadNextLevel();' ng-hide='hideNextButton();' /></div>
 </div>
