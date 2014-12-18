@@ -3,31 +3,36 @@ roboexploreApp.Controllers
     .controller('robotCtrl', [
         '$scope', 'RobotAI',
         function robotCtrl($scope, RobotAI) {
-            function updatePosition(newTop, newLeft){
+			function updatePosition(newTop, newLeft){
 				var newtime = $scope.$parent.robot.time;
 
 				if(!$scope.canMoveTo(newTop, newLeft)){
 					return;
 				}
 				
-				var elevationChange =  getElevationChange(newTop, newLeft);
-				if(elevationChange == 1){
-					newtime += .5;
+				if(!$scope.$parent.robot.finish){
+					var elevationChange =  getElevationChange(newTop, newLeft);
+					if(elevationChange == 1){
+						newtime += .5;
+					}
+					newtime += Math.abs($scope.top - newTop) + Math.abs($scope.left - newLeft);
+					$scope.$parent.robot.time = newtime;
 				}
-				newtime += Math.abs($scope.top - newTop) + Math.abs($scope.left - newLeft);
-				$scope.$parent.robot.time = newtime;
 				$scope.top = newTop;
 				$scope.topPixels = newTop * 20 + 'px';
 				$scope.left = newLeft;
 				$scope.leftPixels = newLeft * 20 + 'px';
+				if($scope.top == $scope.$parent.$parent.finishTop && $scope.left == $scope.$parent.$parent.finishLeft){
+					$scope.$parent.robot.finish = true;
+				}
 			}
 			
 			function getElevationChange(newTop, newLeft){
-				return $scope.$parent.tileRows[newTop][newLeft].elevation - $scope.$parent.tileRows[$scope.top][$scope.left].elevation;
+				return $scope.$parent.getVisibleTile(newTop, newLeft).elevation - $scope.$parent.getVisibleTile($scope.top, $scope.left).elevation;
 			}
 			
 			$scope.canMoveTo = function canMoveTo(newTop, newLeft){
-				if(newTop < 0 || newTop >= $scope.$parent.tileRows.length || newLeft < 0 || newLeft >= $scope.$parent.tileRows.length){
+				if(newTop < 0 || newTop >= $scope.$parent.worldWidth || newLeft < 0 || newLeft >= $scope.$parent.worldHeight){
 					return false;
 				}
 

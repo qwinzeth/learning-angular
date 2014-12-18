@@ -4,9 +4,8 @@ roboexploreApp.Services.factory('RobotAI', function RobotAI($window){
 		moveSomewhere: moveSomewhere
 	};
 	
-	var previous = [];
-	
 	function moveSomewhere($scope, delay){
+		var debug = false;
 		var POINTS_ILLEGAL = -100000000;
 		var POINTS_CLOSER = 10;
 
@@ -25,7 +24,8 @@ roboexploreApp.Services.factory('RobotAI', function RobotAI($window){
 		}
 		if(!$scope.canMoveTo($scope.top, $scope.left - 1)){
 			points[3] = POINTS_ILLEGAL;
-		} 
+		}
+
 		if($scope.top < finishTop && points[2] != POINTS_ILLEGAL){
 			points[2] += POINTS_CLOSER;
 		}
@@ -46,6 +46,10 @@ roboexploreApp.Services.factory('RobotAI', function RobotAI($window){
 			}else if(points[i] == points[bestPoints[0]]){
 				bestPoints.push(i);
 			}
+		}
+		
+		if(debug){
+			console.log('points', points, 'bestPoints', bestPoints);
 		}
 		
 		var chosenDirection = bestPoints[Math.floor(Math.random() * bestPoints.length)];
