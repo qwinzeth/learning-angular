@@ -6,15 +6,6 @@ roboexploreApp.Services.factory('RobotAI', function RobotAI($window){
 	
 	function moveSomewhere($scope, delay){
 		var debug = false;
-		
-		if($scope.previous === undefined){
-			$scope.previous = [];
-		}
-		if(!_.find($scope.previous, function(prev){
-			return $scope.top == prev.top && $scope.left == prev.left;
-		})){
-			$scope.previous.push({top: $scope.top, left: $scope.left});
-		}
 
 		var points = [0, 0, 0, 0];
 		points[0] = getPointsForMove($scope, $scope.top - 1, $scope.left);
@@ -69,7 +60,6 @@ roboexploreApp.Services.factory('RobotAI', function RobotAI($window){
 	
 	function getPointsForMove($scope, hypoTop, hypoLeft){
 		var POINTS_ILLEGAL = -100000000;
-		var POINTS_PREVIOUS = -100000;
 
 		var finishTop = $scope.$parent.$parent.finishTop;
 		var finishLeft = $scope.$parent.$parent.finishLeft;
@@ -77,12 +67,6 @@ roboexploreApp.Services.factory('RobotAI', function RobotAI($window){
 		var hypoPoints = 0;
 		if(!$scope.canMoveTo(hypoTop, hypoLeft)){
 			hypoPoints += POINTS_ILLEGAL;
-		}
-		
-		if(_.find($scope.previous, function(prev){
-			return hypoTop == prev.top && hypoLeft == prev.left;
-		})){
-			hypoPoints += POINTS_PREVIOUS;
 		}
 		
 		return hypoPoints;
