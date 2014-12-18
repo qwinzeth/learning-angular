@@ -49,9 +49,9 @@ roboexploreApp.Controllers
 				$scope.tileRows[currentLevel][i] = [];
 				for(var j = 0; j < $scope.worldWidth; j++){
 					var celev = 0;
-					if(i >= 4 && i <= 10 && j == 14){
+					if(i >= 1 && i <= 10 && j == 14){
 						celev = 12;
-					}else if(i == 10 && j >= 4 && j <= 13){
+					}else if(i == 10 && j >= 1 && j <= 13){
 						celev = 12;
 					}
 					$scope.tileRows[currentLevel][i][j] = {elevation: celev};
@@ -77,7 +77,7 @@ roboexploreApp.Controllers
 				}
 			}
 			
-			$scope.currentTileRows = 2;
+			$scope.currentTileRows = 0;
 			$scope.getVisibleTile = function getVisibleTile(top, left){
 				return $scope.tileRows[$scope.currentTileRows][top][left];
 			}
