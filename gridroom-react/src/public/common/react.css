@@ -1,0 +1,16 @@
+.grid-space,
+.grid-row {
+  height: 20px;
+}
+.grid-space {
+  width: 20px;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  display: inline-block;
+}
+.grid-first-col {
+  border-left: 1px solid #000;
+}
+.grid-first-row {
+  border-top: 1px solid #000;
+}

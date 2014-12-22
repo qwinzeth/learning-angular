@@ -4,6 +4,9 @@
 /boardgame-directives/node_modules
 /boardgame-directives/npm-debug.log
 
+/gridroom-react/node_modules
+/gridroom-react/npm-debug.log
+
 /mastermind-stylus/node_modules
 /mastermind-stylus/npm-debug.log
 
