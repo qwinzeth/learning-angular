@@ -23,3 +23,8 @@
 
 /rps-http-gulp/node_modules
 /rps-http-gulp/npm-debug.log
+
+/treasurehunt-grunt/node_modules
+/treasurehunt-grunt/npm-debug.log
+/treasurehunt-grunt/src/public/_treasurehunt-grunt
+/treasurehunt-grunt/src/public/css

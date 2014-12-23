@@ -9,7 +9,7 @@ roboexploreApp.App.config(uirouteConfig);
 window.roboexploreApp = roboexploreApp;
 
 function uirouteConfig($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise("/")
+	$urlRouterProvider.otherwise("/");
 	$stateProvider
 		.state('default', {
 			url: '/',
