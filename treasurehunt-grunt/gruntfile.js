@@ -32,7 +32,8 @@ module.exports = function(grunt){
 					'src/public/common/lodash.js',
 					'src/public/common/angular.min.js',
 					'src/public/common/angular-ui-router.js',
-					'src/public/common/react.js'
+					'src/public/common/react.js',
+					'src/public/common/jquery-2.1.3.js'
 				],
 				dest: outputDirectory + 'common/scripts.js'
 			}
