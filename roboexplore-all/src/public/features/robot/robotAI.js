@@ -1,5 +1,5 @@
-'use strict';
 roboexploreApp.Services.factory('RobotAI', function RobotAI($window){
+'use strict';
 	return {
 		moveSomewhere: moveSomewhere
 	};
@@ -70,8 +70,8 @@ roboexploreApp.Services.factory('RobotAI', function RobotAI($window){
 			hypoPoints += POINTS_ILLEGAL;
 		}
 
-		if(Math.abs(finishTop - hypoTop) < Math.abs(finishTop - $scope.top)
-		|| Math.abs(finishLeft - hypoLeft) < Math.abs(finishLeft - $scope.left)){
+		if(Math.abs(finishTop - hypoTop) < Math.abs(finishTop - $scope.top) ||
+		Math.abs(finishLeft - hypoLeft) < Math.abs(finishLeft - $scope.left)){
 			hypoPoints += POINTS_CLOSER;
 		}
 		

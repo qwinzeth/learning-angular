@@ -1,9 +1,8 @@
-'use strict'
-
 roboexploreApp
     .Directives
     .directive('tile',
         function tileDirective() {
+		'use strict';
             return {
                 restrict: 'E',
                 scope: {

@@ -1,9 +1,8 @@
-'use strict'
-
 roboexploreApp
     .Directives
     .directive('finish',
         function finishDirective() {
+			'use strict';
 			function setPosition(scope, element, attrs){
 				scope.updatePosition(scope.top, scope.left);
 			}

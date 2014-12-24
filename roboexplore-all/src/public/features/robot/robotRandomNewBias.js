@@ -1,5 +1,5 @@
-'use strict';
 roboexploreApp.Services.factory('RobotAI', function RobotAI($window){
+'use strict';
 	return {
 		moveSomewhere: moveSomewhere
 	};

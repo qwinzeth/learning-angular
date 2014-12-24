@@ -1,8 +1,8 @@
-'use strict';
 roboexploreApp.Controllers
     .controller('worldCtrl', [
         '$scope',
         function worldCtrl($scope) {
+		'use strict';
 			$scope.maxElevation = 12;
 			$scope.worldWidth = 20;
 			$scope.worldHeight = 20;
@@ -11,7 +11,7 @@ roboexploreApp.Controllers
             $scope.tileRows = [];
 			
 			function reset(){
-				$scope.robots = [{color: 'black'}, {color: 'red', isai: true}]
+				$scope.robots = [{color: 'black'}, {color: 'red', isai: true}];
 				for(var i = 0; i < $scope.robots.length; i++){
 					$scope.robots[i].time = 0;
 					$scope.robots[i].finish = false;
@@ -23,19 +23,20 @@ roboexploreApp.Controllers
 			
 			currentLevel++;
 			$scope.tileRows[currentLevel] = {name: "Beginner's Hill", tiles: []};
-			for(var i = 0; i < $scope.worldHeight; i++){
+			var i, j, celev;
+			for(i = 0; i < $scope.worldHeight; i++){
 				$scope.tileRows[currentLevel].tiles[i] = [];
-				for(var j = 0; j < $scope.worldWidth; j++){
+				for(j = 0; j < $scope.worldWidth; j++){
 					$scope.tileRows[currentLevel].tiles[i][j] = {elevation: Math.floor($scope.maxElevation * i / $scope.worldHeight)};
 				}
 			}
 
 			currentLevel++;
 			$scope.tileRows[currentLevel] = {name: "The First Wall", tiles: []};
-			for(var i = 0; i < $scope.worldHeight; i++){
+			for(i = 0; i < $scope.worldHeight; i++){
 				$scope.tileRows[currentLevel].tiles[i] = [];
-				for(var j = 0; j < $scope.worldWidth; j++){
-					var celev = 1;
+				for(j = 0; j < $scope.worldWidth; j++){
+					celev = 1;
 					if(i == 6 && j >= 3 && j <= 15){
 						celev = 10;
 					}
@@ -45,10 +46,10 @@ roboexploreApp.Controllers
 
 			currentLevel++;
 			$scope.tileRows[currentLevel] = {name: "The Trap", tiles: []};
-			for(var i = 0; i < $scope.worldHeight; i++){
+			for(i = 0; i < $scope.worldHeight; i++){
 				$scope.tileRows[currentLevel].tiles[i] = [];
-				for(var j = 0; j < $scope.worldWidth; j++){
-					var celev = 0;
+				for(j = 0; j < $scope.worldWidth; j++){
+					celev = 0;
 					if(i >= 1 && i <= 10 && j == 14){
 						celev = 12;
 					}else if(i == 10 && j >= 1 && j <= 13){
@@ -60,9 +61,9 @@ roboexploreApp.Controllers
 
 			currentLevel++;
 			$scope.tileRows[currentLevel] = {name: "The Narrow Climb", tiles: []};
-			for(var i = 0; i < $scope.worldHeight; i++){
+			for(i = 0; i < $scope.worldHeight; i++){
 				$scope.tileRows[currentLevel].tiles[i] = [];
-				for(var j = 0; j < $scope.worldWidth; j++){
+				for(j = 0; j < $scope.worldWidth; j++){
 					if(i >= 9 && i <= 11 && j <= 2){
 						$scope.tileRows[currentLevel].tiles[i][j] = {elevation: -1};
 					}else if(Math.abs(i - j) <= 1){
@@ -80,12 +81,12 @@ roboexploreApp.Controllers
 			$scope.currentTileRows = 0;
 			$scope.getVisibleTile = function getVisibleTile(top, left){
 				return $scope.tileRows[$scope.currentTileRows].tiles[top][left];
-			}
+			};
 			
 			$scope.loadNextLevel = function loadNextLevel(){
 				$scope.currentTileRows++;
 				reset();
-			}
+			};
 			
 			$scope.hideNextButton = function hideNextButton(){
 				var allRobotsFinished = true;
@@ -94,8 +95,7 @@ roboexploreApp.Controllers
 						allRobotsFinished = false;
 					}
 				}
-				return $scope.currentTileRows == $scope.tileRows.length - 1
-				|| !allRobotsFinished;
-			}
+				return $scope.currentTileRows == $scope.tileRows.length - 1 || !allRobotsFinished;
+			};
         }
     ]);

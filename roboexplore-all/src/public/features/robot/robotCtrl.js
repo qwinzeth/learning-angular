@@ -1,8 +1,8 @@
-'use strict';
 roboexploreApp.Controllers
     .controller('robotCtrl', [
         '$scope', 'RobotAI',
         function robotCtrl($scope, RobotAI) {
+		'use strict';
 			function updatePosition(newTop, newLeft){
 				var newtime = $scope.$parent.robot.time;
 
@@ -13,7 +13,7 @@ roboexploreApp.Controllers
 				if(!$scope.$parent.robot.finish){
 					var elevationChange =  getElevationChange(newTop, newLeft);
 					if(elevationChange == 1){
-						newtime += .5;
+						newtime += 0.5;
 					}
 					newtime += Math.abs($scope.top - newTop) + Math.abs($scope.left - newLeft);
 					$scope.$parent.robot.time = newtime;
@@ -42,15 +42,15 @@ roboexploreApp.Controllers
 				}
 				
 				return true;
-			}
+			};
 			
 			$scope.moveRight = function moveRight(rightDelta){
 				updatePosition($scope.top, $scope.left + parseInt(rightDelta));
-			}
+			};
 
 			$scope.moveDown = function moveDown(downDelta){
 				updatePosition($scope.top + parseInt(downDelta), $scope.left);
-			}
+			};
 
 			$scope.top = 0;
 			$scope.topPixels = '0px';

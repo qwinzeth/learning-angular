@@ -4,9 +4,6 @@ var del = require('del');
 var options = require('./options.js');
 var runSequence = require('run-sequence');
 
-gulp.task('clean', cleanBuild);
-gulp.task('build', buildTasks);
-
 function cleanBuild(cb) {
     console.log('Cleaning build folder: ', options.appOutput);
     del([
@@ -15,7 +12,7 @@ function cleanBuild(cb) {
 }
 
 function buildTasks(cb) {
-    runSequence( 'clean', 'styles',
+    runSequence( 'clean', ['styles', 'lint'],
 	['index', 'features'],
 	cb);
 }

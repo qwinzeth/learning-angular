@@ -6,6 +6,8 @@ require('./gulp/styles.js');
 require('./gulp/features.js');
 require('./gulp/index.js');
 
+require('./gulp/lint.js');
+
 require('./gulp/build.js');
 require('./gulp/serve.js');
 
