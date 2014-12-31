@@ -9,10 +9,16 @@ treasurehuntApp.App.config(uirouteConfig);
 window.treasurehuntApp = treasurehuntApp;
 
 function uirouteConfig($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise("/");
+	$urlRouterProvider.otherwise("/play/default");
 	$stateProvider
 		.state('default', {
-			url: '/',
-			templateUrl: 'features/treasure-field/treasure-field-partial.html'
+			url: '/play',
+			templateUrl: 'features/game/game-partial.html'
+		}).state('default.treasurefield', {
+			url: '/default',
+			views: {
+				'treasureField': { templateUrl: 'features/treasure-field/treasure-field-partial.html' },
+				'hud': { templateUrl: 'features/hud/hud-partial.html' }
+			}
 		});
 }

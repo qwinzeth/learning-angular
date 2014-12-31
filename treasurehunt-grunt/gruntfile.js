@@ -47,12 +47,18 @@ module.exports = function(grunt){
 	
 	var lintAndConcatFiles = [
 		'src/public/common/treasurehuntApp.js',
-		'src/public/features/treasure-field/treasurefieldCtrl.js'
+		'src/public/features/treasure-field/treasurefieldCtrl.js',
+		'src/public/features/game/gameCtrl.js'
 	];
 	gruntConfig.jshint.files = _.union(gruntConfig.jshint.files, lintAndConcatFiles);
 	gruntConfig.concat.dist.src = _.union(gruntConfig.concat.dist.src, lintAndConcatFiles);
 	
-	var copyFiles = ['index.html', 'features/treasure-field/treasure-field-partial.html'];
+	var copyFiles = [
+		'index.html',
+		'features/treasure-field/treasure-field-partial.html',
+		'features/hud/hud-partial.html',
+		'features/game/game-partial.html'
+	];
 	gruntConfig.copy.main.files = _.map(copyFiles, function(fname){
 		return {
 			src: ['src/public/' + fname],
@@ -62,7 +68,8 @@ module.exports = function(grunt){
 
 	gruntConfig.stylus.compile.files[outputDirectory + 'common/styles.css'] = [
 		'src/public/features/treasure-field/treasure-field.styl',
-		'src/public/features/treasure-brick/treasure-brick.styl'
+		'src/public/features/treasure-brick/treasure-brick.styl',
+		'src/public/features/hud/hud.styl'
 	];
 	
 	grunt.initConfig(gruntConfig);

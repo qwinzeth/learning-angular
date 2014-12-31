@@ -1,0 +1,31 @@
+<div id='divHUD' class='hud-container'>
+	<table class='gem-collection'>
+		<tr>
+			<th>Diamonds</th>
+			<td>{{diamonds}}</td>
+		</tr>
+		<tr>
+			<th>Rubies</th>
+			<td>{{rubies}}</td>
+		</tr>
+		<tr>
+			<th>Emeralds</th>
+			<td>{{emeralds}}</td>
+		</tr>
+		<tr>
+			<th>Sapphires</th>
+			<td>{{sapphires}}</td>
+		</tr>
+		<tr>
+			<th>Gold</th>
+			<td>{{gold}}</td>
+		</tr>
+		<tr>
+			<th>Silver</th>
+			<td>{{silver}}</td>
+		</tr>
+	</table>
+	<div class='hud-input'>
+		<input type='button' value='Destroy Wall (1 Gold + 1 Silver)' ng-show='destroyWallVisible();' ng-click='initiateWallDestructionMode();' />
+	</div>
+</div>
