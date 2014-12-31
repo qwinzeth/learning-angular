@@ -21,17 +21,58 @@ treasurehuntApp.Controllers
 					if($scope.$parent.$parent.mode === 'normal'){
 						reveal();
 					}else if($scope.$parent.$parent.mode ==='wall-destruction'){
-						wallDestroy();
+						wallDestroyPayCosts();
+					}else if($scope.$parent.$parent.mode ==='wall-adjacent-destruction'){
+						wallAdjacentDestroyPayCosts();
 					}else{
 						console.log("Unknown mode: ", $scope.$parent.$parent.mode);
+					}
+
+					function wallDestroyPayCosts(){
+						if(wallDestroy()){
+							$scope.$parent.$parent.gold--;
+							$scope.$parent.$parent.silver--;
+						}
+					}
+					
+					function wallAdjacentDestroyPayCosts(){
+						if(wallDestroy()){
+							$scope.$parent.$parent.rubies--;
+							$scope.$parent.$parent.emeralds--;
+							$scope.$parent.$parent.sapphires--;
+							var branches = [];
+							pushAdjacentRevealedWalls(branches);
+							while(branches.length > 0){
+								var ctreasure = branches.pop();
+								row = ctreasure.row;
+								col = ctreasure.col;
+								wallDestroy();
+								pushAdjacentRevealedWalls(branches);
+							}
+						}
+						
+						function pushAdjacentRevealedWalls(targetArray){
+							if(row > 0 && treasureFieldData[row - 1][col].revealed && treasureFieldData[row - 1][col].value === TREASURE_TYPE_WALL){
+								targetArray.push({row: row - 1, col: col});
+							}
+							if(col > 0 && treasureFieldData[row][col - 1].revealed && treasureFieldData[row][col - 1].value === TREASURE_TYPE_WALL){
+								targetArray.push({row: row, col: col - 1});
+							}
+							if(row < height - 1 && treasureFieldData[row + 1][col].revealed && treasureFieldData[row + 1][col].value === TREASURE_TYPE_WALL){
+								targetArray.push({row: row + 1, col: col});
+							}
+							if(col < width - 1 && treasureFieldData[row][col + 1].revealed && treasureFieldData[row][col + 1].value === TREASURE_TYPE_WALL){
+								targetArray.push({row: row, col: col + 1});
+							}
+						}
 					}
 
 					function wallDestroy(){
 						var clickedTreasure = treasureFieldData[row][col];
 						if(!clickedTreasure.revealed || clickedTreasure.value != TREASURE_TYPE_WALL){
-							return;
+							return false;
 						}
-						var jqTreasure = $('[data-reactid="' + reactid + '"]');
+						var jqTreasure = $('#treasureRow' + row + 'Col' + col);
 						$scope.$parent.$parent.mode = 'normal';
 						jqTreasure.removeClass('wall');
 						jqTreasure.addClass('empty');
@@ -39,8 +80,7 @@ treasurehuntApp.Controllers
 						jqTreasure.html('&nbsp;');
 						clickedTreasure.revealed = true;
 						clickedTreasure.value = TREASURE_TYPE_EMPTY;
-						$scope.$parent.$parent.gold--;
-						$scope.$parent.$parent.silver--;
+						return true;
 					}
 				
 					function reveal(){
@@ -184,6 +224,7 @@ treasurehuntApp.Controllers
 				function toReactTreasureBrick(treasureBrick){
 					return React.createElement('div', {
 						key: 'uniqueTreasureRow' + treasureBrick.row + 'Col' + treasureBrick.col,
+						id: 'treasureRow' + treasureBrick.row + 'Col' + treasureBrick.col,
 						className: 'treasure-brick',
 						onClick: clickHandleFunction(treasureBrick.row, treasureBrick.col)
 					}, treasureBrick.displayChar);

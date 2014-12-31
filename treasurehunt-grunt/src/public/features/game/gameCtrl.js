@@ -15,8 +15,16 @@ treasurehuntApp.Controllers
 				$scope.mode = 'wall-destruction';
 			};
 			
+			$scope.initiateAdjacentWallDestructionMode = function initiateWallDestructionMode(){
+				$scope.mode = 'wall-adjacent-destruction';
+			};
+			
 			$scope.destroyWallVisible = function destroyWallVisible(){
 				return $scope.silver > 0 && $scope.gold > 0 && $scope.mode === 'normal';
+			};
+
+			$scope.destroyAdjacentWallVisible = function destroyWallVisible(){
+				return $scope.rubies > 0 && $scope.emeralds > 0 && $scope.sapphires > 0 && $scope.mode === 'normal';
 			};
 		}
 	]);
