@@ -1,0 +1,58 @@
+.world-tile
+	display inline-block
+	width 20px
+	height 20px
+	margin 0px
+	padding 0px
+	text-align center
+	vertical-align middle
+	
+maxelevation = 12
+for elev in 0 1 2 3 4 5 6 7 8 9 10 11 12
+	.world-tile-elevation-{elev}
+		percent = elev / maxelevation
+		background-color rgb(percent * 255, (1 - percent) * 100 + 100, 80)
+		
+.level-title
+	font-size 20px
+	font-weight bold
+		
+.world-tile-elevation--1
+	background-color #0000FF
+	
+.world-container
+	position relative
+	
+.world-object
+	position absolute
+	
+.finish
+	font-weight bold
+	color #00FFFF
+	
+.robot-controls
+	position absolute
+	left 440px
+	top 25px
+	input
+		position absolute
+		width 22px
+		height 22px
+	
+robot-button-spacing = 25
+	
+.robot-button-left
+	left -(robot-button-spacing)px
+	top 0px
+	
+.robot-button-right
+	left (robot-button-spacing)px
+	top 0px
+	
+.robot-button-up
+	left 0px
+	top -(robot-button-spacing)px
+	
+.robot-button-down
+	left 0px
+	top (robot-button-spacing)px

@@ -29,13 +29,13 @@ filtersApp.controller("filtersCtrl", function filtersCtrl($scope){
 	
 	$scope.pokemon = [{
 		name: "Bulbasaur",
-		types: ["Grass"]
+		types: ["Poison", "Grass"]
 	}, {
 		name: "Ivysaur",
-		types: ["Grass"]
+		types: ["Poison", "Grass"]
 	}, {
 		name: "Venasaur",
-		types: ["Grass"]
+		types: ["Poison", "Grass"]
 	}, {
 		name: "Charmander",
 		types: ["Fire"]
@@ -65,7 +65,7 @@ filtersApp.controller("filtersCtrl", function filtersCtrl($scope){
 		types: ["Psychic"]
 	}, {
 		name: "Gengar",
-		types: ["Ghost"]
+		types: ["Poison", "Ghost"]
 	}, {
 		name: "Dragonite",
 		types: ["Flying", "Dragon"]
