@@ -10,10 +10,10 @@ var tap = require('gulp-tap');
 
 function generateCommonJs() {
 
-    var appPath = 'src/public/common/RPS.js';
+    var appPath = './src/public/common/RPS.js';
 
     var src = [
-        appPath,
+        appPath
         'src/public/common/**/*.js',
         '!src/public/common/**/compatibility.js'
     ];
@@ -37,7 +37,12 @@ function generateCommonJs() {
     return gulp
         .src(src)
         .pipe(manifest('common.js', manifestOptions))
-        .pipe(gulp.dest(options.appOutput + '/common/'));
+        .pipe(tap(function doBrowserification(file, t) {
+			return browserify(file, browserifyConfig)
+                .bundle()
+                .pipe(source('common.js'))
+                .pipe(gulp.dest(options.appOutput + '/common/'));
+        }));
 }
 
 gulp.task('script-common', generateCommonJs);
