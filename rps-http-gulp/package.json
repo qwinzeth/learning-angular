@@ -21,6 +21,8 @@
     "gulp-task-listing": "^0.3.0",
     "gulp-uglify": "^1.0.1",
     "gulp-util": "^3.0.1",
+    "lodash": "^2.4.1",
+    "partialify": "^3.1.2",
     "path": "^0.4.9",
     "run-sequence": "^1.0.2",
     "through": "^2.3.6",
@@ -32,11 +34,12 @@
       "browserify-shim"
     ]
   },
+  "browser": {
+      "angular": "./src/public/common/angular.min.js"
+  },
   "browserify-shim": {
     "jquery": "$",
     "jquery-ui": {},
-    "angular": {
-      "exports": "angular"
-    }
+    "angular": "angular"
   }
 }

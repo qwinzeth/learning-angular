@@ -1,6 +1,6 @@
 'use strict';
 var options = {
-    appName: 'rps-http-gulp',
+    appName: 'RPS',
     appOutput: './src/public/_rps-http-gulp',
     appServer: './src/server/index.js',
     baseTheme: './src/public/styles/core/theme',
